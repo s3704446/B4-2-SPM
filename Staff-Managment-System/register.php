@@ -15,6 +15,7 @@
 <head>
         <title>Register</title>
         <link rel="stylesheet" href="css/breadcrumbs.css">
+        <link rel="stylesheet" href="css/styles.css">
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script src="javaScript/jquery.breadcrumbs-generator.js"></script>
         <script>
