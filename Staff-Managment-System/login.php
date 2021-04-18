@@ -13,41 +13,32 @@
 <!DOCTYPE html><html lang="en">
 <head>
 
-		<?php require_once("includes/head.php"); ?>
-		<link rel="stylesheet" href="css/styles.css">
-        <!-- jQuery CDN -->
 </head>
 <body>
 
-	<!-- call header here  -->
-	<?php require_once("includes/header.php"); ?>
-	
-	<br><br>
-	<!-- call navbar here  -->
-    <?php require_once("includes/navbar.php"); ?>
-	<br>
 
     <div class="container">
+    <h1>Login</h1>
         <div class="row">
                 <form method="post">
                     <div class="user">
                 <label for="secondname">Email</label>
-                <input type="text" class="form" id="email" name="email"
+                <input type="text" id="email" name="email"
                 <?php displayValue($_POST, 'email'); ?> />
                 <?php displayError($errors, 'email'); ?>
                 </div>
 					<!-- Verify email and password  -->
                 <div class="user">
-                <label for="phone">Password</label>
-                <input type="password" class="form" id="password" name="password" />
+                <label>Password</label>
+                <input type="password"id="password" name="password" />
                 <?php displayError($errors, 'password'); ?>
                 </div>
                 <button type="submit" class="btnlogin" name="login" value="login">Login</button>
+                
             </form>
         </div>
+        <a href="register.php"><button type="submit" name="register" value="register">Register Now</button></a>
 		
-			<!-- call footer here  -->
-        <?php require_once('includes/footer.php'); ?>
     </div>
 </body>
 </html>
