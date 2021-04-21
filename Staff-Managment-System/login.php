@@ -10,6 +10,17 @@
         }
     }
 ?>
+<?php
+    $errors = [];
+    if(isset($_POST['login'])) {
+        $errors = loginStaff($_POST);
+
+        if(count($errors) === 0) {
+	echo "<script>alert('Login success');parent.location.href='manage.php';</script>";
+            exit();
+        }
+    }
+?>
 <!DOCTYPE html><html lang="en">
 <head>
         <link rel="stylesheet" href="css/styles.css">

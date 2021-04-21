@@ -1,3 +1,9 @@
 {
-    
+    "111@111.com": {
+        "firstname": "111",
+        "lastname": "111",
+        "email": "111@111.com",
+        "position": "manager",
+        "password-hash": "*0"
+    }
 }

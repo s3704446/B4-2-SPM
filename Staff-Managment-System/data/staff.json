@@ -1,0 +1,23 @@
+{
+    "222@222.com": {
+        "firstname": "2223344",
+        "lastname": "33322255",
+        "email": "222@222.com",
+        "position": "staff",
+        "password-hash": "*0"
+    },
+    "s3704446@student.rmit.edu.au": {
+        "firstname": "222",
+        "lastname": "333",
+        "email": "s3704446@student.rmit.edu.au",
+        "position": "staff",
+        "password-hash": "*0"
+    },
+    "444@444.com": {
+        "firstname": "222",
+        "lastname": "333222",
+        "email": "444@444.com",
+        "position": "staff",
+        "password-hash": "*0"
+    }
+}

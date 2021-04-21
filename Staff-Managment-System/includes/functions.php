@@ -2,8 +2,10 @@
     const USERS_PATH = 'data/users.json';
     const USER_STATS_PATH = 'data/user_stats.json';
     const CATEGORIES_PATH = 'data/categories.json';
+    const STAFF_PATH = 'data/staff.json';
 
     const USER_SESSION_KEY = 'user';
+    const STAFF_SESSION_KEY = 'user';
 
     const MINUTES_MINIMUM = 1;
     const MINUTES_MAXIMUM = 600;
@@ -30,10 +32,13 @@
         $json = json_encode($data, JSON_PRETTY_PRINT);
         file_put_contents($path, $json, LOCK_EX);
     }
+    function deleteJsonFile($data, $path) {
+        $json = json_decode($data, JSON_PRETTY_PRINT);
+    }
     //display error settings
     function displayError($errors, $name) {
         if(isset($errors[$name]))
-            echo "<div class='text-danger'>{$errors[$name]}</div>";
+            echo "<div class='text-danger' style='text-align:center;color:red'>{$errors[$name]}</div>";
     }
     //display value
     function displayValue($form, $name) {
@@ -54,7 +59,6 @@
     function verifyPasswordHash($password, $hash) {
         $tokens = explode('$', $hash);
         $salt = $tokens[3];
-
         return $hash === generatePasswordHash($password, $salt);
     }
 
@@ -183,6 +187,7 @@
     function getLoggedInUser() {
         return isUserLoggedIn() ? $_SESSION[USER_SESSION_KEY] : null;
     }
+    
 
     //user login
     function loginUser($form) {
@@ -200,6 +205,7 @@
 
         if(count($errors) === 0) {
             $user = getUser($form['email']);
+
 
 
             if($user !== null && verifyPasswordHash($form['password'], $user['password-hash']))
@@ -252,6 +258,7 @@
                 'firstname' => htmlspecialchars(trim($form['firstname'])),
                 'lastname' => htmlspecialchars(trim($form['lastname'])),
                 'email' => htmlspecialchars(trim($form['email'])),
+                'position' => 'manager',
                 'password-hash' => generatePasswordHash($form['password'])
             ];
             $users = readUsers();
@@ -261,3 +268,101 @@
 
         return $errors;
     }
+
+
+    function readStaff() {
+        return readJsonFile(STAFF_PATH);
+    }
+
+    function updateStaff($Staff) {
+        updateJsonFile($Staff, STAFF_PATH);
+    }
+
+    function getStaff($email) {
+        $Staff = readStaff();
+
+        return isset($Staff[$email]) ? $Staff[$email] : null;
+    }
+    function deleteStaff($form){
+        deleteJsonFile($form, STAFF_PATH);
+    }
+    //add staff
+    function addStaff($form) {
+        $errors = [];
+
+        //validate information
+        $key = 'firstname';
+        if(!isset($form[$key]) || preg_match('/^\s*$/', $form[$key]) === 1)
+            $errors[$key] = 'Please enter your first name.';
+
+        $key = 'lastname';
+        if(!isset($form[$key]) || preg_match('/^\s*$/', $form[$key]) === 1)
+            $errors[$key] = 'Please enter your last name.';
+
+        $key = 'email';
+        if(!isset($form[$key]) || filter_var($form[$key], FILTER_VALIDATE_EMAIL) === false)
+            $errors[$key] = 'Please enter a valid email.';
+        else if(getUser($form[$key]) !== null)
+            $errors[$key] = 'Email is already registered.';
+
+
+        $key = 'password';
+        if(!isset($form[$key]) || preg_match('/^\s*$/',$form[$key])===1)
+            $errors[$key] = 'Please enter your password';
+
+        $key = 'confirmPassword';
+        if(isset($form['password']) && (!isset($form[$key]) || $form['password'] !== $form[$key]))
+            $errors[$key] = 'Passwords do not match.';
+
+        if(count($errors) === 0) {
+
+            $staff = [
+                'firstname' => htmlspecialchars(trim($form['firstname'])),
+                'lastname' => htmlspecialchars(trim($form['lastname'])),
+                'email' => htmlspecialchars(trim($form['email'])),
+                'position' => 'staff',
+                'password-hash' => generatePasswordHash($form['password'])
+            ];
+            $Staff = readStaff();
+            $Staff[$staff['email']] = $staff;
+            updateStaff($Staff);
+        }
+
+        return $errors;
+    }
+
+    function isStaffLoggedIn() {
+        return isset($_SESSION[STAFF_SESSION_KEY]);
+    }
+
+    function getLoggedInStaff() {
+        return isStaffLoggedIn() ? $_SESSION[STAFF_SESSION_KEY] : null;
+    }
+
+    function loginStaff($form) {
+        $errors = [];
+
+        //validate email and password
+        $key = 'email';
+        if(!isset($form[$key]) || filter_var($form[$key], FILTER_VALIDATE_EMAIL) === false)
+            $errors[$key] = 'Email is invalid.';
+
+        $key = 'password';
+        if(!isset($form[$key]) || preg_match('/^\s*$/',$form[$key])===1)
+            $errors[$key] = 'Password Error!';
+            
+
+        if(count($errors) === 0) {
+            $staff = getStaff($form['email']);
+
+
+             if($staff !== null && verifyPasswordHash($form['password'], $staff['password-hash']))
+
+            $_SESSION[STAFF_SESSION_KEY] = $staff;
+            else
+                $errors[$key] = 'Sorry, your email or password is incorrect. Please try again.';
+        }
+
+        return $errors;
+    }
+
