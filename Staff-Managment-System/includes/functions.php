@@ -1,7 +1,7 @@
 <?php
     const USERS_PATH = 'data/users.json';
     const USER_STATS_PATH = 'data/user_stats.json';
-    const CATEGORIES_PATH = 'data/categories.json';
+    const CATEGORIES_PATH = 'data/category.json';
     const STAFF_PATH = 'data/staff.json';
 
     const USER_SESSION_KEY = 'user';
@@ -33,7 +33,8 @@
         file_put_contents($path, $json, LOCK_EX);
     }
     function deleteJsonFile($data, $path) {
-        $json = json_decode($data, JSON_PRETTY_PRINT);
+        $json = file_get_contents($path);
+        unset($json);
     }
     //display error settings
     function displayError($errors, $name) {
@@ -95,7 +96,7 @@
         return isset($userStats[$email]) ? $userStats[$email] : [];
     }
 
-    function getUserStatsForCategory($email, $category) {
+    function getUserStatsForCategory($email) {
         $userStats = getUserStats($email);
 
 
@@ -103,7 +104,7 @@
     }
 
     //user create activities
-    function createActivity($form, $email, $category) {
+    function createActivity($form, $email) {
         $errors = [];
 
         //validate information
@@ -119,30 +120,6 @@
                 implode(['Minutes is required and must be between ', MINUTES_MINIMUM, ' and ', MINUTES_MAXIMUM, '.']);
         }
         
-        $key = 'weight';
-        if(!isset($form[$key]) || filter_var($form[$key], FILTER_VALIDATE_INT,
-        ['options' => ['min_range' => WEIGHT_MINIMUM, 'max_range' => WEIGHT_MAXIMUM]]) === false)
-        {
-            $errors[$key] =
-                implode(['Weight is required and must be between ', WEIGHT_MINIMUM, ' and ', WEIGHT_MAXIMUM, '.']);
-        }    
-        
-        
-        $key = 'bmi';
-        if(!isset($form[$key]) || filter_var($form[$key], FILTER_VALIDATE_INT,
-        ['options' => ['min_range' => BMI_MINIMUM, 'max_range' => BMI_MAXIMUM]]) === false)
-        {
-            $errors[$key] =
-                implode(['BMI is required and must be between ', BMI_MINIMUM, ' and ', BMI_MAXIMUM, '.']);
-        } 
-        
-        $key = 'goal';
-            if(!isset($form[$key]) || filter_var($form[$key], FILTER_VALIDATE_INT,
-                    ['options' => ['min_range' => $form['minutes'], 'max_range' => MINUTES_MAXIMUM]]) === false)
-                {
-                    $errors[$key] =
-                        implode(['Minutes is required and must be between ', $form['minutes'], ' and ', MINUTES_MAXIMUM, '.']);
-                }
 
         else
             $form[$key] = (int) $form[$key];
@@ -151,14 +128,11 @@
 
             $activity = [
                 'date' => htmlspecialchars(trim($form['date'])),
-                'minutes' => $form['minutes'],
-                'weight'=> $form['weight'],
-                'bmi'=> $form['bmi'],
-                'goal'=> $form['goal']
+                'minutes' => $form['minutes']
             ];
 
             $userStats = readUserStats();
-            $userStats[$email][$category][] = $activity;
+            $userStats[$email][] = $activity;
 
             updateUserStats($userStats);
         }

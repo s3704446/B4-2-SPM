@@ -12,6 +12,8 @@ $staff = getStaff($_GET['email']);
             echo "<script>alert('Successful!');parent.location.href='manage.php';</script>";
             exit();
         }
+    }else if(isset($_POST['removeStaff'])){
+        deleteStaff($_POST);
     }
 ?>
 <!DOCTYPE html>

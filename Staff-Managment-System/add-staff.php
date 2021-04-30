@@ -1,4 +1,4 @@
-<?php require_once('includes/functions.php'); ?>
+<?php require_once('includes/authorise.php'); ?>
 <?php
     $errors = [];
     if(isset($_POST['addStaff'])) {
