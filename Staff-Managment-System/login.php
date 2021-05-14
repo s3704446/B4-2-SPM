@@ -1,22 +1,16 @@
 <?php require_once('includes/functions.php'); ?>
 <?php
     $errors = [];
-    if(isset($_POST['login'])) {
-        $errors = loginUser($_POST);
-
-        if(count($errors) === 0) {
-	echo "<script>alert('Login success');parent.location.href='manage.php';</script>";
-            exit();
+    if(isset($_POST['position'])) {
+        if ($_POST['position'] == 'User') {
+            $errors = loginUser($_POST);
         }
-    }
-?>
-<?php
-    $errors = [];
-    if(isset($_POST['login'])) {
-        $errors = loginStaff($_POST);
+        else if ($_POST['position'] == 'Staff'){
+            $errors = loginStaff($_POST);
+        }
 
         if(count($errors) === 0) {
-	echo "<script>alert('Login success');parent.location.href='manage.php';</script>";
+            echo "<script>alert('Login success');parent.location.href='manage.php';</script>";
             exit();
         }
     }
@@ -40,10 +34,21 @@
                 </div>
 					<!-- Verify email and password  -->
                 <div class="user">
-                <label>Password</label>
-                <input type="password"id="password" name="password" />
+                    <label>Password</label>
+                    <input type="password"id="password" name="password" />
                 <?php displayError($errors, 'password'); ?>
                 </div>
+                    <div class="user">
+                        <label>Position</label>
+                        <input style="    /* width: 20%; */
+    padding: 12px 20px;
+    /* margin: 4px 0; */
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-left: 550px;" type="radio" name="position" value="User" />Manager
+                        <input type="radio" name="position" value="Staff" />Staff
+                    </div>
                 <button type="submit" class="btnlogin" name="login" value="login">Login</button>
                 
             </form>

@@ -14,7 +14,7 @@
     <!--categories-->
         <div style="text-align:center">
 
-            <a href="add-shift.php?email=<?= $staff['email']; ?>">
+            <a href="add-shift.php?email=<?= $_GET['email']; ?>">
                 Add Shift
             </a>
             <a href="manage.php" class="fitness-button-grey">Back</a>
@@ -36,7 +36,7 @@
                     <td><?= $value['date']; ?></td>
                     <td><?= $value['minutes']; ?></td>
                     <td><?= $value['location']; ?></td>
-                    <td><a href='edit-shift.php?id=<?= $value['id']; ?>'>edit</a></td>
+                    <td><a href='edit-shift.php?id=<?= $value['id']; ?>&email=<?=$_GET['email']?>'>edit</a></td>
 
                     
                     </tr>

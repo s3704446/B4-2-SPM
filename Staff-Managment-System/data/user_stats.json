@@ -1,18 +1,9 @@
 {
-    "s3704446@student.rmit.edu.au": {
-        "60975a11f3f50": {
-            "id": "60975a11f3f50",
-            "date": "05\/07\/2021",
-            "minutes": "55",
-            "location": "333"
-        }
+    "609e85e399ab2": {
+        "id": "609e85e399ab2",
+        "date": "05\/07\/2021",
+        "minutes": "55",
+        "location": "111"
     },
-    "222@222.com": {
-        "60975be00a8ec": {
-            "id": "60975be00a8ec",
-            "date": "05\/07\/2021",
-            "minutes": "22",
-            "location": "111"
-        }
-    }
+    "s3704446@student.rmit.edu.au": []
 }

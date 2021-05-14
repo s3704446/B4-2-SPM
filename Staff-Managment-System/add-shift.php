@@ -6,10 +6,10 @@
 
     $errors = [];
     if(isset($_POST['addShift'])) {
-        $errors = createActivity($_POST, $staff['email']);
+        $errors = createActivity($_POST, $_GET['email']);
 
         if(count($errors) === 0) {
-            header("Location: manage-shift.php?email={$staff['email']}");
+            header("Location: manage-shift.php?email={$_GET['email']}");
             exit();
         }
     }

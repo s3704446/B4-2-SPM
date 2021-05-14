@@ -8,13 +8,7 @@
     const STAFF_SESSION_KEY = 'user';
 
     const MINUTES_MINIMUM = 1;
-    const MINUTES_MAXIMUM = 600;
-
-    const WEIGHT_MINIMUM = 1;
-    const WEIGHT_MAXIMUM = 300;
-
-    const BMI_MINIMUM = 1;
-    const BMI_MAXIMUM = 1000;
+    const MINUTES_MAXIMUM = 2400;
 
     const DATE_FORMAT = 'd/m/Y';
 
@@ -34,7 +28,24 @@
     }
     function deleteJsonFile($data, $path) {
         $json = file_get_contents($path);
-        unset($json);
+        $json = json_decode($json,true);
+
+        if  (!empty($json[$data['email']])){
+            unset($json[$data['email']]);
+        }
+        $json = json_encode($json, JSON_PRETTY_PRINT);
+        file_put_contents($path, $json, LOCK_EX);
+    }
+
+    //根据 id 删除  user_status
+    function deleteJsonFileUserStatus($id,$path,$email){
+        $json = file_get_contents($path);
+        $json = json_decode($json,true);
+        if  (!empty($json[$email][$id])){
+            unset($json[$email][$id]);
+        }
+        $json = json_encode($json, JSON_PRETTY_PRINT);
+        file_put_contents($path, $json, LOCK_EX);
     }
     //display error settings
     function displayError($errors, $name) {
@@ -96,13 +107,24 @@
         return isset($userStats[$email]) ? $userStats[$email] : [];
     }
 
-  
+ 
 
     function getUserStatsForCategory($email) {
         $userStats = getUserStats($email);
 
 
         return isset($userStats[$category]) ? $userStats[$category] : [];
+    }
+
+    //update user activities
+    function updateActivity($form,$email)
+    {
+        $userStats = readUserStats();
+
+        if (!empty($userStats[$email][$form['id']])){
+            $userStats[$email][$form['id']] = $form;
+        }
+        updateUserStats($userStats);
     }
 
     //user create activities
@@ -267,6 +289,9 @@
     }
     function deleteStaff($form){
         deleteJsonFile($form, STAFF_PATH);
+    }
+    function deleteUserStatus($form,$email){
+        deleteJsonFileUserStatus($form['id'], USER_STATS_PATH,$email);
     }
     //add staff
     function addStaff($form) {

@@ -1,19 +1,23 @@
 <?php require_once('includes/functions.php'); ?>
 <?php 
 $user = getLoggedInUser();
-$userStats = getUserStats($user['email']);
+$userStats = getUserStats($_GET['email']);
 $StatsDetail=$userStats[$_GET['id']];
-$staff = getStaff($user['email']);
+$staff = getStaff($_GET['email']);
 ?>
 <?php
     $errors = [];
     if(isset($_POST['updateShift'])) {
-        $errors = createActivity($_POST, $staff['email']);
+        $errors = updateActivity($_POST, $_GET['email']);
 
         if(count($errors) === 0) {
-            echo "<script>alert('Successful!');parent.location.href='manage-shift.php?email={$user['email']}';</script>";
+            echo "<script>alert('Successful!');parent.location.href='manage-shift.php?email={$_GET['email']}';</script>";
             exit();
         }
+    }else if(isset($_POST['removeShift'])){
+        deleteUserStatus($_POST, $_GET['email']);
+        echo "<script>alert('Successful!');parent.location.href='manage-shift.php?email={$_GET['email']}';</script>";
+        exit();
     }
 ?>
 <!DOCTYPE html>
@@ -71,5 +75,6 @@ $staff = getStaff($user['email']);
                     
 
                     <button type="updateShift" class="updateShift" name="updateShift" value="updateShift">Update</button>
+                    <button type="removeShift" class="removeShift" name="removeShift" value="removeShift">Remove</button>
                 </form>
 </body>

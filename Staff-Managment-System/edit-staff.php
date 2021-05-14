@@ -14,6 +14,8 @@ $staff = getStaff($_GET['email']);
         }
     }else if(isset($_POST['removeStaff'])){
         deleteStaff($_POST);
+        echo "<script>alert('Successful!');parent.location.href='manage.php';</script>";
+        exit();
     }
 ?>
 <!DOCTYPE html>
@@ -27,7 +29,7 @@ $staff = getStaff($_GET['email']);
 
                 <div>
                         <label>Email: cannot change</label> 
-                        <input type="text" id="email" name="email" value="<?= $staff['email']; ?>" readonly="<?= $staff['email']; ?>"
+                        <input type="text" id="email" name="email" value="<?= $_GET['email']; ?>" readonly="<?= $_GET['email']; ?>"
                             <?php displayValue($_POST, 'email'); ?>  >
                     </div>
 
