@@ -1,15 +1,17 @@
-<?php require_once('includes/authorise.php'); ?>
+<?php require_once('includes/functions.php'); ?>
+<?php 
+$user = getLoggedInUser();
+$userStats = getUserStats($user['email']);
+$StatsDetail=$userStats[$_GET['id']];
+$staff = getStaff($user['email']);
+?>
 <?php
-    $user = getLoggedInUser();
-    $userStats = getUserStats($user['email']);
-    $staff = getStaff($_GET['email']);
-
     $errors = [];
-    if(isset($_POST['addShift'])) {
+    if(isset($_POST['updateShift'])) {
         $errors = createActivity($_POST, $staff['email']);
 
         if(count($errors) === 0) {
-            header("Location: manage-shift.php?email={$staff['email']}");
+            echo "<script>alert('Successful!');parent.location.href='manage-shift.php?email={$user['email']}';</script>";
             exit();
         }
     }
@@ -19,8 +21,17 @@
 <head>
 </head>
 <body>
-<h1 style="text-align: center;margin-top: 10px;">Add a Shift</h1>
+<h1 style="text-align: center;margin-top: 10px;">Update a Shift</h1>
                 <form  method="post">
+                <div>
+                        <label for="id">Shift ID
+                        </label>
+                        <br> 
+                        <input type="text" id="id" name="id" value="<?= $StatsDetail['id']; ?>" readonly="<?= $StatsDetail['id']; ?>"
+                            <?php displayValue($_POST, 'id'); ?> />
+                        <?php displayError($errors, 'id'); ?>
+                    </div>
+
                 <div>
                         <label for="date">
                             *Date
@@ -29,7 +40,7 @@
                             </small>
                         </label>
                         <br>
-                        <input type="text" id="date" name="date"
+                        <input type="text" id="date" name="date" value="<?= $StatsDetail['date']; ?>"
                             <?php displayValue($_POST, 'date'); ?> />
                         <?php displayError($errors, 'date'); ?>
                     </div>
@@ -42,7 +53,7 @@
                             </small>
                         </label>
                         <br>
-                        <input type="text" id="minutes" name="minutes"
+                        <input type="text" id="minutes" name="minutes" value="<?= $StatsDetail['minutes']; ?>"
                             <?php displayValue($_POST, 'minutes'); ?> />
                         <?php displayError($errors, 'minutes'); ?>
                     </div>
@@ -52,15 +63,13 @@
                             *Location
                         </label>
                         <br>
-                        <input type="text" id="location" name="location"
+                        <input type="text" id="location" name="location" value="<?= $StatsDetail['location']; ?>"
                             <?php displayValue($_POST, 'location'); ?> />
                         <?php displayError($errors, 'location'); ?>
                     </div>
 
                     
 
-                    <button type="addShift" class="addShift" name="addShift" value="addShift">Submit</button>
+                    <button type="updateShift" class="updateShift" name="updateShift" value="updateShift">Update</button>
                 </form>
-
-                </body>
-                </html>
+</body>

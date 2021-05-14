@@ -96,6 +96,8 @@
         return isset($userStats[$email]) ? $userStats[$email] : [];
     }
 
+  
+
     function getUserStatsForCategory($email) {
         $userStats = getUserStats($email);
 
@@ -119,6 +121,10 @@
             $errors[$key] =
                 implode(['Minutes is required and must be between ', MINUTES_MINIMUM, ' and ', MINUTES_MAXIMUM, '.']);
         }
+
+        $key = 'location';
+        if(!isset($form[$key]) || preg_match('/^\s*$/', $form[$key]) === 1)
+            $errors[$key] = 'Please enter your working location.';
         
 
         else
@@ -127,12 +133,14 @@
         if(count($errors) === 0) {
 
             $activity = [
+                'id' => uniqid(),
                 'date' => htmlspecialchars(trim($form['date'])),
-                'minutes' => $form['minutes']
+                'minutes' => $form['minutes'],
+                'location' => htmlspecialchars(trim($form['location']))
             ];
 
             $userStats = readUserStats();
-            $userStats[$email][] = $activity;
+            $userStats[$email][$activity['id']] = $activity;
 
             updateUserStats($userStats);
         }

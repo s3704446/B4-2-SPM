@@ -27,6 +27,7 @@
             <tr>
                     <th> Date </th>
                     <th> Minutes </th>
+                    <th> Location </th>
             </tr>
             <?php if(count($userStats) !== 0) { ?>
             <?php foreach($userStats as $value) { ?>
@@ -34,6 +35,8 @@
             
                     <td><?= $value['date']; ?></td>
                     <td><?= $value['minutes']; ?></td>
+                    <td><?= $value['location']; ?></td>
+                    <td><a href='edit-shift.php?id=<?= $value['id']; ?>'>edit</a></td>
 
                     
                     </tr>
