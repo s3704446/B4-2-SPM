@@ -26,7 +26,7 @@
             <h2>Shift:</h2> 
             <tr>
                     <th> Date </th>
-                    <th> Minutes </th>
+                    <th> Working Minutes </th>
                     <th> Location </th>
             </tr>
             <?php if(count($userStats) !== 0) { ?>

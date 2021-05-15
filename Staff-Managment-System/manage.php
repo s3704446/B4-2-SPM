@@ -1,6 +1,7 @@
 <?php require_once('includes/authorise.php'); ?>
 <?php
     $user = getLoggedInUser();
+    $userStats = getUserStats($user['email']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,12 +22,13 @@
             <p class="lead">How's your day?</p>
         </div>
 
-        <a href='add-staff.php'>Add a staff</a>
+        
         <a href='logout.php'>Logout</a>
 
 		<!-- Show 3 kinds of myFitness -->
         <div class="row">
-            <?php if($user['position']="manager"){?>
+            <?php if($user['position']=='manager'){?>
+                <a href='add-staff.php'>Add a staff</a>
                 <h2>Manager</h2>
                 <?php foreach(readUsers() as $key => $value) { ?>
                 <div class="col-sm-6 col-md-4 col-lg-2">
@@ -45,9 +47,34 @@
                     <a href='manage-shift.php?email=<?= $key; ?>'>manage</a>
                     <a href='edit-staff.php?email=<?= $key; ?>'>edit</a>
                 </div>
-            <?php }}else{ ?>
-                <p>no record</p>
-            <?php } ?>
+            <?php }}else if($user['position']=="staff"){ 
+                        if(count($userStats) !== 0){ ?>
+                        <a href='edit-staff.php?email=<?=$user['email'];?>' >edit personal profiles</a>
+                        <p>You have <?= count($userStats);?> working shifts to finish:</p>
+                        <table style="margin-left:20%">
+                            <h2>Shift:</h2> 
+                            <tr>
+                                    <th> Date </th>
+                                    <th> Working Minutes </th>
+                                    <th> Location </th>
+                            </tr>
+                            <?php foreach($userStats as $value) { ?>
+                            <tr>
+                            
+                                    <td><?= $value['date']; ?></td>
+                                    <td><?= $value['minutes']; ?></td>
+                                    <td><?= $value['location']; ?></td>
+                                    <td><a href='edit-shift.php?id=<?= $value['id']; ?>&email=<?=$user['email']?>'>edit</a></td>
+
+                    
+                    </tr>
+                    <?php } ?>
+
+                        </table>
+                
+            <?php }else{?>
+                <p> You have no working shift</p>
+            <?php }} ?>
         </div>
 
 	

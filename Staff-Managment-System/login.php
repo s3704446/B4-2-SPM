@@ -53,7 +53,7 @@
                 
             </form>
         </div>
-        <a href="register.php"><button type="submit" name="register" value="register">Register Now</button></a>
+        <a href="register.php"><button type="submit" name="register" value="register">Manager Register Now</button></a>
 		
     </div>
 </body>

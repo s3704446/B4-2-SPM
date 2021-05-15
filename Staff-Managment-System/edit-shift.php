@@ -77,4 +77,9 @@ $staff = getStaff($_GET['email']);
                     <button type="updateShift" class="updateShift" name="updateShift" value="updateShift">Update</button>
                     <button type="removeShift" class="removeShift" name="removeShift" value="removeShift">Remove</button>
                 </form>
+                <?php if($user['position']=="manager"){?>
+                    <a href='manage-shift.php?email=<?= $_GET['email'];?>'>Back</a>
+                <?php }else if($user['position']=="staff"){?>
+                    <a href='manage.php'>Back</a>
+                    <?php }?>
 </body>

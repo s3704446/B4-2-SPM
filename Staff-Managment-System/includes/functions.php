@@ -216,7 +216,7 @@
 
                 $_SESSION[USER_SESSION_KEY] = $user;
             else
-                $errors[$key] = 'Sorry, your email or password is incorrect. Please try again.';
+                $errors[$key] = 'Sorry, your email, password or position is incorrect. Please try again.';
         }
 
         return $errors;

@@ -69,5 +69,7 @@ $staff = getStaff($_GET['email']);
                     <button type="removeStaff" class="removeStaff" name="removeStaff" value="removeStaff">Remove</button>
                 </form>
 
+                <a href='manage.php'>Back</a>
+
                 </body>
                 </html>

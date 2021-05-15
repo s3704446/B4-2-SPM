@@ -5,7 +5,7 @@
         $errors = registerUser($_POST);
 
         if(count($errors) === 0) {
-            header('Location: login.php');
+            echo "<script>alert('Successful!');parent.location.href='login.php';</script>";
             exit();
         }
     }

@@ -5,5 +5,33 @@
         "minutes": "55",
         "location": "111"
     },
-    "s3704446@student.rmit.edu.au": []
+    "s3704446@student.rmit.edu.au": [],
+    "rl@rl.com": {
+        "609f6a7d82d08": {
+            "id": "609f6a7d82d08",
+            "date": "05\/07\/2022",
+            "minutes": "22",
+            "location": "111"
+        },
+        "609f6a82d1ded": {
+            "id": "609f6a82d1ded",
+            "date": "05\/07\/2022",
+            "minutes": "22",
+            "location": "222"
+        },
+        "609f6a8cd0105": {
+            "id": "609f6a8cd0105",
+            "date": "05\/07\/2022",
+            "minutes": "222",
+            "location": "423423"
+        }
+    },
+    "444@444.com": {
+        "609f6d7b997b9": {
+            "id": "609f6d7b997b9",
+            "date": "05\/07\/2022",
+            "minutes": "22",
+            "location": "111"
+        }
+    }
 }

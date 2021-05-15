@@ -61,6 +61,7 @@
 
                     <button type="addShift" class="addShift" name="addShift" value="addShift">Submit</button>
                 </form>
+                <a href='manage-shift.php?email=<?= $_GET['email'];?>'>Back</a>
 
                 </body>
                 </html>

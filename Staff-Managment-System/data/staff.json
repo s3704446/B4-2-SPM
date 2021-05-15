@@ -12,5 +12,12 @@
         "email": "444@444.com",
         "position": "staff",
         "password-hash": "*0"
+    },
+    "rl@rl.com": {
+        "firstname": "Lei",
+        "lastname": "YUliangxx",
+        "email": "rl@rl.com",
+        "position": "staff",
+        "password-hash": "*0"
     }
 }

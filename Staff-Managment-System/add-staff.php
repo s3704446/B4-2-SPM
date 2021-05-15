@@ -55,6 +55,7 @@
 
                     <button type="addStaff" class="addStaff" name="addStaff" value="addStaff">Submit</button>
                 </form>
+                <a href='manage.php'>Back</a>
 
                 </body>
                 </html>
