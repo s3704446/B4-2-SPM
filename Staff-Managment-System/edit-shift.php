@@ -11,13 +11,24 @@ $staff = getStaff($_GET['email']);
         $errors = updateActivity($_POST, $_GET['email']);
 
         if(count($errors) === 0) {
+            if($user['position']=='manager'){
             echo "<script>alert('Successful!');parent.location.href='manage-shift.php?email={$_GET['email']}';</script>";
             exit();
+            }else if($user['position']=='staff'){
+                echo "<script>alert('Successful!');parent.location.href='manage.php';</script>";
+            exit();
+            }
         }
     }else if(isset($_POST['removeShift'])){
+        if($user['position']=='manager'){
         deleteUserStatus($_POST, $_GET['email']);
         echo "<script>alert('Successful!');parent.location.href='manage-shift.php?email={$_GET['email']}';</script>";
         exit();
+        }else if($user['position']=='staff'){
+            deleteUserStatus($_POST, $_GET['email']);
+        echo "<script>alert('Successful!');parent.location.href='manage.php';</script>";
+        exit();
+        }
     }
 ?>
 <!DOCTYPE html>

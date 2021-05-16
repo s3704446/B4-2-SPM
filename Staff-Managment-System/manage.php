@@ -50,9 +50,10 @@
             <?php }}else if($user['position']=="staff"){ 
                         if(count($userStats) !== 0){ ?>
                         <a href='edit-staff.php?email=<?=$user['email'];?>' >edit personal profiles</a>
+                        <a href='add-shift.php?email=<?=$user['email'];?>' >Add a working shift now!</a>
                         <p>You have <?= count($userStats);?> working shifts to finish:</p>
                         <table style="margin-left:20%">
-                            <h2>Shift:</h2> 
+                            <h2>Working Shift List:</h2> 
                             <tr>
                                     <th> Date </th>
                                     <th> Working Minutes </th>

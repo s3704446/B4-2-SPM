@@ -23,13 +23,14 @@
             <!--display recorded activities-->
         
             <table style="margin-left:20%">
-            <h2>Shift:</h2> 
-            <tr>
+            <h2>Shift of <?= $staff['firstname'];?> <?= $staff['lastname'];?>:</h2> 
+            
+            <?php if(count($userStats) !== 0) { ?>
+                <tr>
                     <th> Date </th>
                     <th> Working Minutes </th>
                     <th> Location </th>
             </tr>
-            <?php if(count($userStats) !== 0) { ?>
             <?php foreach($userStats as $value) { ?>
             <tr>
             

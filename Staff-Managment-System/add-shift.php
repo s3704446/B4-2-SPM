@@ -8,11 +8,16 @@
     if(isset($_POST['addShift'])) {
         $errors = createActivity($_POST, $_GET['email']);
 
-        if(count($errors) === 0) {
+        if(count($errors) === 0) 
+            if($user['position']=='manager'){
             header("Location: manage-shift.php?email={$_GET['email']}");
             exit();
+            }else if($user['position']=='staff'){
+            header("Location: manage.php");
+            exit();
+            }
         }
-    }
+    
 ?>
 <!DOCTYPE html>
 <html>
