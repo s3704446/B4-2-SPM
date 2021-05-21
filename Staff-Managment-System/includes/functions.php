@@ -158,7 +158,8 @@
                 'id' => uniqid(),
                 'date' => htmlspecialchars(trim($form['date'])),
                 'minutes' => $form['minutes'],
-                'location' => htmlspecialchars(trim($form['location']))
+                'location' => htmlspecialchars(trim($form['location'])),
+                'state' => htmlspecialchars(trim($form['state']))
             ];
 
             $userStats = readUserStats();

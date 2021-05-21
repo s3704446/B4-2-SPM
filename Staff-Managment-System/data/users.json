@@ -19,5 +19,12 @@
         "email": "aaa@aa.com",
         "position": "manager",
         "password-hash": "*0"
+    },
+    "333@33.com": {
+        "firstname": "333",
+        "lastname": "333",
+        "email": "333@33.com",
+        "position": "manager",
+        "password-hash": "*0"
     }
 }

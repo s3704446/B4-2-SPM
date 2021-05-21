@@ -83,7 +83,22 @@ $staff = getStaff($_GET['email']);
                         <?php displayError($errors, 'location'); ?>
                     </div>
 
-                    
+                    <div>
+                        <label for="state">
+
+                            <small>
+                                state
+                            </small>
+                        </label>
+                        <br>
+                        <select name="state" id="state">
+                            <option checked="<?= $StatsDetail['state']; ?>=='Unread'" value="Unread">Unread</option>
+                            <option checked="<?= $StatsDetail['state']; ?>=='Agree'" value="Agree">Agree</option>
+                            <option checked="<?= $StatsDetail['state']; ?>=='Absence'" value="Absence">Absence</option>
+                        </select>
+
+
+                    </div>
 
                     <button type="updateShift" class="updateShift" name="updateShift" value="updateShift">Update</button>
                     <button type="removeShift" class="removeShift" name="removeShift" value="removeShift">Remove</button>

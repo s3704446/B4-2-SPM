@@ -19,5 +19,12 @@
         "email": "rl@rl.com",
         "position": "staff",
         "password-hash": "*0"
+    },
+    "33@33.com": {
+        "firstname": "33",
+        "lastname": "33",
+        "email": "33@33.com",
+        "position": "staff",
+        "password-hash": "*0"
     }
 }
