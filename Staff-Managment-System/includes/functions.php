@@ -11,6 +11,8 @@
     const MINUTES_MAXIMUM = 2400;
 
     const DATE_FORMAT = 'd/m/Y';
+    error_reporting(E_ERROR); 
+    ini_set("display_errors","Off");
 
 
     session_start();

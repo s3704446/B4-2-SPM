@@ -1,29 +1,8 @@
 {
-    "s3704446@student.rmit.edu.au": {
-        "firstname": "222",
-        "lastname": "333",
-        "email": "s3704446@student.rmit.edu.au",
-        "position": "staff",
-        "password-hash": "*0"
-    },
-    "444@444.com": {
-        "firstname": "222",
-        "lastname": "333222",
-        "email": "444@444.com",
-        "position": "staff",
-        "password-hash": "*0"
-    },
-    "rl@rl.com": {
-        "firstname": "Lei",
-        "lastname": "YUliangxx",
-        "email": "rl@rl.com",
-        "position": "staff",
-        "password-hash": "*0"
-    },
-    "33@33.com": {
-        "firstname": "33",
-        "lastname": "33",
-        "email": "33@33.com",
+    "lyl@lyl.com": {
+        "firstname": "Yuliang",
+        "lastname": "Lei",
+        "email": "lyl@lyl.com",
         "position": "staff",
         "password-hash": "*0"
     }

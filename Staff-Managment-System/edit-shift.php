@@ -94,7 +94,9 @@ $staff = getStaff($_GET['email']);
                         <select name="state" id="state">
                             <option checked="<?= $StatsDetail['state']; ?>=='Unread'" value="Unread">Unread</option>
                             <option checked="<?= $StatsDetail['state']; ?>=='Agree'" value="Agree">Agree</option>
+                            <?php if($user['position']=='manager'){?>
                             <option checked="<?= $StatsDetail['state']; ?>=='Absence'" value="Absence">Absence</option>
+                            <?php }?>
                         </select>
 
 

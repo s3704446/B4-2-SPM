@@ -66,7 +66,12 @@
 
                     <button type="addShift" class="addShift" name="addShift" value="addShift">Submit</button>
                 </form>
+                <?php if($user['position']=='manager'){?>
                 <a href='manage-shift.php?email=<?= $_GET['email'];?>'>Back</a>
+                <?php } else if($user['position']=='staff'){?>
+                    <a href='manage.php?email=<?= $_GET['email'];?>'>Back</a>
+                    <?php }?>
+
 
                 </body>
                 </html>

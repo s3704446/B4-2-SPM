@@ -1,29 +1,8 @@
 {
-    "111@111.com": {
-        "firstname": "111",
-        "lastname": "111",
-        "email": "111@111.com",
-        "position": "manager",
-        "password-hash": "*0"
-    },
-    "lyl@lyl.com": {
-        "firstname": "Yuliang",
-        "lastname": "Lei",
-        "email": "lyl@lyl.com",
-        "position": "manager",
-        "password-hash": "*0"
-    },
-    "aaa@aa.com": {
-        "firstname": "aaaa",
-        "lastname": "aaaa",
-        "email": "aaa@aa.com",
-        "position": "manager",
-        "password-hash": "*0"
-    },
-    "333@33.com": {
-        "firstname": "333",
-        "lastname": "333",
-        "email": "333@33.com",
+    "rl@rl.com": {
+        "firstname": "Lei",
+        "lastname": "YUliang",
+        "email": "rl@rl.com",
         "position": "manager",
         "password-hash": "*0"
     }

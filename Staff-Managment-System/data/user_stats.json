@@ -1,63 +1,28 @@
 {
-    "609e85e399ab2": {
-        "id": "609e85e399ab2",
-        "date": "05\/07\/2021",
-        "minutes": "55",
-        "location": "111"
-    },
-    "s3704446@student.rmit.edu.au": [],
-    "rl@rl.com": {
-        "609f6a7d82d08": {
-            "id": "609f6a7d82d08",
-            "date": "05\/07\/2022",
-            "minutes": "22",
-            "location": "111"
-        },
-        "609f6a82d1ded": {
-            "id": "609f6a82d1ded",
-            "date": "05\/07\/2022",
-            "minutes": "22",
-            "location": "222"
-        }
-    },
-    "444@444.com": {
-        "609f6d7b997b9": {
-            "id": "609f6d7b997b9",
-            "date": "05\/07\/2022",
-            "minutes": "22",
-            "location": "111"
-        }
-    },
-    "33@33.com": {
-        "60a6176525a1d": {
-            "id": "60a6176525a1d",
-            "date": "22\/05\/2021",
-            "minutes": "3",
-            "location": "77",
+    "lyl@lyl.com": {
+        "60a744d954e33": {
+            "id": "60a744d954e33",
+            "date": "05\/07\/2021",
+            "minutes": "345",
+            "location": "333",
             "state": "Agree",
             "updateShift": "updateShift"
         },
-        "60a61d5c676e8": {
-            "id": "60a61d5c676e8",
-            "date": "20\/09\/2021",
-            "minutes": "7",
-            "location": "7",
-            "state": "Absence",
+        "60a745980d7e8": {
+            "id": "60a745980d7e8",
+            "date": "04\/06\/2021",
+            "minutes": "345",
+            "location": "dddd",
+            "state": "Unread",
             "updateShift": "updateShift"
         },
-        "60a61e0e87f5d": {
-            "id": "60a61e0e87f5d",
-            "date": "23\/05\/2021",
-            "minutes": "7",
-            "location": "7",
-            "state": ""
-        },
-        "60a6241806b00": {
-            "id": "60a6241806b00",
-            "date": "20\/04\/2021",
+        "60a74cf52074d": {
+            "id": "60a74cf52074d",
+            "date": "06\/04\/2021",
             "minutes": "22",
-            "location": "22",
-            "state": ""
+            "location": "2345",
+            "state": "Unread",
+            "updateShift": "updateShift"
         }
     }
 }

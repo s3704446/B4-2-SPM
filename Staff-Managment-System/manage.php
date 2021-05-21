@@ -70,6 +70,7 @@
 		<!-- Show 3 kinds of myFitness -->
         <div class="row">
             <?php if($user['position']=='manager'){?>
+                <a href='edit-profile.php?email=<?=$user['email'];?>' >edit personal profiles</a>
                 <a href='add-staff.php'>Add a staff</a>
                 <h2>Manager</h2>
                 <?php foreach(readUsers() as $key => $value) { ?>
@@ -77,7 +78,7 @@
 				<p>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</p>
 				
                     <p><?= $value['firstname']; ?> <?= $value['lastname']; ?></p> 
-                    <a href='edit-staff.php?email=<?= $key; ?>'>edit</a>
+                    <a href='edit-profile.php?email=<?= $key; ?>'>edit</a>
                 </div>
             <?php }?>
                 <h2>Staff</h2>
@@ -89,10 +90,12 @@
                     <a href='manage-shift.php?email=<?= $key; ?>'>manage</a>
                     <a href='edit-staff.php?email=<?= $key; ?>'>edit</a>
                 </div>
-            <?php }}else if($user['position']=="staff"){ 
-                        if(count($userStats) !== 0){ ?>
-                        <a href='edit-staff.php?email=<?=$user['email'];?>' >edit personal profiles</a>
+            <?php }}else if($user['position']=="staff"){ ?>
+                <a href='edit-profile.php?email=<?=$user['email'];?>' >edit personal profiles</a>
                         <a href='add-shift.php?email=<?=$user['email'];?>' >Add a working shift now!</a>
+                
+                       <?php if(count($userStats) !== 0){ ?>
+                        
                         <p>You have <?= count($userStats);?> working shifts to finish:</p>
                         <table id="table-1" style="margin-left:20%">
                             <h2>Working Shift List:</h2>
@@ -116,7 +119,7 @@
                                 list($day, $month, $year) = explode("/", $value['date']);
                                 $ymd = "$year-$month-$day";
                                 array_push( $data,  $ymd);
-                                if(strtotime($ymd)>time('Y-m-d')){
+                                if(strtotime($ymd)>time('d-m-Y')){
 
                                     ?>
                             <tr>
@@ -207,11 +210,11 @@
                             var cycleData = [{
                                 'name': "145",
                                 'startDate': "2020-2-09 15:31:29",
-                                'type': "手机号"
+                                'type': "Phone number"
                             }, {
                                 'name': "178956874",
                                 'startDate': "2020-2-23 15:31:29",
-                                'type': "手机号"
+                                'type': "Phone Number"
                             }]//
                             me._refreshCalendar(opts.newDate, cycleData);
                         }
