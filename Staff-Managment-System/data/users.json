@@ -5,5 +5,12 @@
         "email": "rl@rl.com",
         "position": "manager",
         "password-hash": "*0"
+    },
+    "11@11.com": {
+        "firstname": "1",
+        "lastname": "1",
+        "email": "11@11.com",
+        "position": "manager",
+        "password-hash": "*0"
     }
 }

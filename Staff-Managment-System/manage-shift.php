@@ -7,10 +7,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
+	<div class="taiji">
+		</div>
+	<br>
     <!--categories-->
         <div style="text-align:center">
 

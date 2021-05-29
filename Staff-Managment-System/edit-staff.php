@@ -21,6 +21,7 @@ $staff = getStaff($_GET['email']);
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <h1 style="text-align: center;margin-top: 10px;">Edit staff</h1>

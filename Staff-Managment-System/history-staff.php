@@ -40,12 +40,14 @@
     }
 </style>
 <head>
-	
+	<link rel="stylesheet" href="css/styles.css">
 
 </head>
 <body>
    
-
+	<div class="taiji">
+		</div>
+	<br>
 	<!-- Welcome message  -->
     <div class="container">
         <div class="mb-3">

@@ -26,7 +26,9 @@
 </head>
 <body>
     <!--header-->
-        
+		<div class="taiji">
+		</div>
+	<br>
             <!--registeration form-->
                 <div id="register-content">
                 <h1 style="text-align: center;margin-top: 10px;">Register Now!</h1>

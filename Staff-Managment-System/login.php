@@ -20,8 +20,9 @@
         <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-
+	<div class="taiji">
+		</div>
+	<br>
     <div class="container">
     <h1>Login</h1>
         <div class="row">

@@ -20,8 +20,12 @@ $user = getLoggedInUser();
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<div class="taiji">
+		</div>
+	<br>
 <h1 style="text-align: center;margin-top: 10px;">Edit User</h1>
 
                 <form class="registration_form" method="post">
