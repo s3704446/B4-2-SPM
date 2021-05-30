@@ -67,7 +67,9 @@ $staff = getStaff($_GET['email']);
                     
 
                     <button type="updateStaff" class="updateStaff" name="updateStaff" value="updateStaff">Submit</button>
+                    <?php if($user['position']=='manager'){?>
                     <button type="removeStaff" class="removeStaff" name="removeStaff" value="removeStaff">Remove</button>
+                    <?php }?>
                 </form>
 
                 <a href='manage.php'>Back</a>
