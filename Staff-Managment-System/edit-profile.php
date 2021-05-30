@@ -11,10 +11,6 @@ $user = getUser($_GET['email']);
             echo "<script>alert('Successful!');parent.location.href='manage.php';</script>";
             exit();
         }
-    }else if(isset($_POST['removeUser'])){
-        deleteStaff($_POST);
-        echo "<script>alert('Successful!');parent.location.href='manage.php';</script>";
-        exit();
     }
 ?>
 <!DOCTYPE html>
