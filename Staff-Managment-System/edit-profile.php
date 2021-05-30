@@ -1,11 +1,11 @@
 <?php require_once('includes/functions.php'); ?>
 <?php 
-$user = getLoggedInUser();
+$user = getUser($_GET['email']);
 ?>
 <?php
     $errors = [];
     if(isset($_POST['updateUser'])) {
-        $errors = addStaff($_POST);
+        $errors = registerUser($_POST);
 
         if(count($errors) === 0) {
             echo "<script>alert('Successful!');parent.location.href='manage.php';</script>";
